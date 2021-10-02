@@ -2,7 +2,6 @@
 <Patch>
 
 	<!--The stats that are being patched will appear in the settings menu in the same order listed here-->
-	<Operation Class="XmlExtensions.StopwatchStart"/>
 	<Operation Class="XmlExtensions.ApplyPatch">
 		<patchName>MoodMatters_MoodPatch</patchName>
 		<arguments>
@@ -126,5 +125,4 @@
 			</Operation>
 		</caseTrue>
 	</Operation>
-	<Operation Class="XmlExtensions.StopwatchStop"/>
 </Patch>
