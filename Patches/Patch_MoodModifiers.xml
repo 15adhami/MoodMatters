@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!--The stats that are being patched will appear in the settings menu in the same order listed here-->
+	<Operation Class="XmlExtensions.StopwatchStart"/>
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>workspeed</li> <!--Name of stat (no spaces)-->
+			<li>Global work speed</li> <!--Label for settings menu-->
+			<li>WorkSpeedGlobal</li> <!--Defname of the StatDef-->
+			<li>90</li> <!--Default min modifier-->
+			<li>110</li> <!--Default max modifier-->
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>movespeed</li>
+			<li>Move speed</li>
+			<li>MoveSpeed</li>
+			<li>90</li>
+			<li>110</li>
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>learnspeed</li>
+			<li>Learning rate</li>
+			<li>GlobalLearningFactor</li>
+			<li>90</li>
+			<li>110</li>
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>restspeed</li>
+			<li>Rest speed</li>
+			<li>RestRateMultiplier</li>
+			<li>90</li>
+			<li>110</li>
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>negotiationability</li>
+			<li>Negotiation ability</li>
+			<li>NegotiationAbility</li>
+			<li>90</li>
+			<li>110</li>
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>tradeprice</li>
+			<li>Trade price improvement</li>
+			<li>TradePriceImprovement</li>
+			<li>90</li>
+			<li>110</li>
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.ApplyPatch">
+		<patchName>MoodMatters_MoodPatch</patchName>
+		<arguments>
+			<li>immunity</li>
+			<li>Immunity factor</li>
+			<li>ImmunityGainSpeed</li>
+			<li>95</li>
+			<li>105</li>
+		</arguments>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.FindMod">
+		<mods>
+			<li>Royalty</li>
+		</mods>
+		<caseTrue>
+			<Operation Class="XmlExtensions.ApplyPatch">
+				<patchName>MoodMatters_MoodPatch</patchName>
+				<arguments>
+					<li>meditation</li>
+					<li>Meditation rate</li>
+					<li>MeditationFocusGain</li>
+					<li>90</li>
+					<li>110</li>
+				</arguments>
+			</Operation>
+		</caseTrue>
+	</Operation>
+	
+	<Operation Class="XmlExtensions.FindMod">
+		<mods>
+			<li>Ideology</li>
+		</mods>
+		<caseTrue>
+			<Operation Class="XmlExtensions.ApplyPatch">
+				<patchName>MoodMatters_MoodPatch</patchName>
+				<arguments>
+					<li>conversionpower</li>
+					<li>Conversion power</li>
+					<li>ConversionPower</li>
+					<li>90</li>
+					<li>110</li>
+				</arguments>
+			</Operation>
+			
+			<Operation Class="XmlExtensions.ApplyPatch">
+				<patchName>MoodMatters_MoodPatch</patchName>
+				<arguments>
+					<li>suppressionpower</li>
+					<li>Suppression power</li>
+					<li>SuppressionPower</li>
+					<li>90</li>
+					<li>110</li>
+				</arguments>
+			</Operation>
+		</caseTrue>
+	</Operation>
+	<Operation Class="XmlExtensions.StopwatchStop"/>
+</Patch>

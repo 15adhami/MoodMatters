@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<XmlExtensions.SettingsMenuDef>
+		<modId>imranfish.moodmatters</modId>
+		<label>Mood Matters</label>
+		<defName>imranfish_moodmatters</defName>
+		<settings>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Mood Matters</text>
+				<font>Medium</font>
+				<anchor>Middle</anchor>
+				<tKey>imranfish_moodmatters_title</tKey>
+			</li>
+			<li Class="XmlExtensions.Setting.GapLine"/>
+			<li Class="XmlExtensions.Setting.Text">
+				<text>Enable/disable which stats are affected by mood. The smaller number in each of the ranges is the percent multiplier at 0% mood, and the larger number is the percent multiplier at 100% mood. Restarting the game is required to apply any changes.</text>
+				<anchor>Middle</anchor>
+				<tKey>imranfish_moodmatters_description</tKey>
+			</li>
+			
+			<!--All mood settings will be injected here-->
+			
+			<li Class="XmlExtensions.Setting.ResetSettings"/>
+		</settings>
+	</XmlExtensions.SettingsMenuDef>
+
+</Defs>

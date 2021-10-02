@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+	<XmlExtensions.SlateDef Name="MoodMatters_Slate" Abstract="True">
+		<col>left</col>
+	</XmlExtensions.SlateDef>
+
+</Defs>
