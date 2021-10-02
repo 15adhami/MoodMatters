@@ -5,6 +5,7 @@
 		<modId>imranfish.moodmatters</modId>
 		<label>Mood Matters</label>
 		<defName>imranfish_moodmatters</defName>
+		<tKey>imranfish_moodmatters_title</tKey>
 		<settings>
 			<li Class="XmlExtensions.Setting.Text">
 				<text>Mood Matters</text>
