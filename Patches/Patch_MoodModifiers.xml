@@ -2,7 +2,6 @@
 <Patch>
 
 	<!--The stats that are being patched will appear in the settings menu in the same order listed here-->
-	<Operation Class="XmlExtensions.StopwatchStart"/>
 	<Operation Class="XmlExtensions.ApplyPatch">
 		<patchName>MoodMatters_MoodPatch</patchName>
 		<arguments>
@@ -92,7 +91,7 @@
 					<li>Meditation rate</li>
 					<li>MeditationFocusGain</li>
 					<li>90</li>
-					<li>110</li>
+			        <li>110</li>
 				</arguments>
 			</Operation>
 		</caseTrue>
@@ -110,7 +109,7 @@
 					<li>Conversion power</li>
 					<li>ConversionPower</li>
 					<li>90</li>
-					<li>110</li>
+			        <li>110</li>
 				</arguments>
 			</Operation>
 			
@@ -121,10 +120,9 @@
 					<li>Suppression power</li>
 					<li>SuppressionPower</li>
 					<li>90</li>
-					<li>110</li>
+			        <li>110</li>
 				</arguments>
 			</Operation>
 		</caseTrue>
 	</Operation>
-	<Operation Class="XmlExtensions.StopwatchStop"/>
 </Patch>
