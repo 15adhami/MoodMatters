@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<XmlExtensions.PatchDef Name="MoodMatters_MoodPatch" Abstract="True">
+		<parameters>
+			<li>stat</li> <!--Name of stat (no spaces)-->
+			<li>label</li> <!--Label for settings menu-->
+			<li>defName</li> <!--defname of the StatDef-->
+			<li>defaultMin</li> <!--Default min modifier-->
+			<li>defaultMax</li> <!--Default max modifier-->
+		</parameters>
+		<apply>
+		
+			<!--Apply the initial patch-->
+			<Operation Class="XmlExtensions.ApplyPatch">
+				<patchName>MoodMatters_PatchStat</patchName>
+				<arguments>
+					<li>{stat}</li>
+					<li>{defName}</li>
+					<li>{defaultMin}</li>
+					<li>{defaultMax}</li>
+				</arguments>
+			</Operation>
+		
+			<!--Add new settings to the menu-->
+			<Operation Class="XmlExtensions.ApplyPatch">
+				<patchName>MoodMatters_InjectSettings</patchName>
+				<arguments>
+					<li>{stat}</li>
+					<li>{label}</li>
+					<li>{defaultMin}</li>
+					<li>{defaultMax}</li>
+				</arguments>
+			</Operation>
+			
+			<!--Make it so you do not need to reboot game to apply changes-->
+			<!--This part is optional, but without it you need to reboot the game to apply changes in settings-->
+			<Operation Class="XmlExtensions.ApplyPatch">
+				<patchName>MoodMatters_InjectActions</patchName>
+				<arguments>
+					<li>{stat}</li>
+					<li>{defName}</li>
+					<li>{defaultMin}</li>
+					<li>{defaultMax}</li>
+				</arguments>
+			</Operation>
+			
+		</apply>
+	</XmlExtensions.PatchDef>
+	
+</Defs>

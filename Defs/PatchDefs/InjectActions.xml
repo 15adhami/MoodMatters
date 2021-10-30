@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<XmlExtensions.PatchDef Name="MoodMatters_InjectActions" Abstract="True">
+		<parameters>
+			<li>stat</li> <!--Name of stat (no spaces)-->
+			<li>defName</li> <!--defName for the stat-->
+			<li>defaultMin</li> <!--Default min modifier-->
+			<li>defaultMax</li> <!--Default max modifier-->
+		</parameters>
+		<apply>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/XmlExtensions.SettingsMenuDef[modId="imranfish.moodmatters"]/postCloseActions</xpath>
+				<value>
+					<li Class="XmlExtensions.Action.ApplyOperations">
+						<apply>
+							<Operation Class="XmlExtensions.OptionalPatch">
+								<modId>imranfish.moodmatters</modId>
+								<key>patch{stat}</key>
+								<defaultValue>true</defaultValue>
+								<caseTrue>
+									<!--The setting is set to true, so we need to add the StatPart with the new values-->
+									<Operation Class="XmlExtensions.AggregateValues">
+										<valueOperations>
+											<Operation Class="XmlExtensions.UseSetting">
+												<modId>imranfish.moodmatters</modId>
+												<key>{stat}max</key>
+												<defaultValue>{defaultMax}</defaultValue>
+											</Operation>
+											<Operation Class="XmlExtensions.UseSetting">
+												<modId>imranfish.moodmatters</modId>
+												<key>{stat}min</key>
+												<defaultValue>{defaultMin}</defaultValue>
+											</Operation>
+											<Operation Class="XmlExtensions.CreateVariable">
+												<storeIn>{stat}maxmultiplier</storeIn>
+												<value>{{stat}max}</value>
+												<value2>100</value2>
+												<operation>/</operation>
+											</Operation>
+											<Operation Class="XmlExtensions.CreateVariable">
+												<storeIn>{stat}minmultiplier</storeIn>
+												<value>{{stat}min}</value>
+												<value2>100</value2>
+												<operation>/</operation>
+											</Operation>
+										</valueOperations>
+										<apply>
+											<!--Use DefDatabase operations instead-->
+											<Operation Class="XmlExtensions.DefDatabaseConditional">
+												<defType>StatDef</defType>
+												<defName>{defName}</defName>
+												<objPath>parts/[@Class="StatPart_Mood"]</objPath>
+												<caseTrue>
+													<!--If the StatPart exists already (if the user only changes the min/max values), then just update the numbers-->
+													<Operation Class="XmlExtensions.DefDatabaseOperationReplace">
+														<defType>StatDef</defType>
+														<defName>{defName}</defName>
+														<objPath>parts/[@Class="StatPart_Mood"]/factorFromMoodCurve/points</objPath>
+														<value>
+															<points>
+																<li>(0,{{stat}minmultiplier})</li>
+																<li>(1,{{stat}maxmultiplier})</li>
+															</points>
+														</value>
+													</Operation>
+												</caseTrue>
+												<caseFalse>
+													<!--If the StatPart does not exist (the user had previously disables the setting), then add the StatPart-->
+													<Operation Class="XmlExtensions.DefDatabaseOperationAdd">
+														<defType>StatDef</defType>
+														<defName>{defName}</defName>
+														<objPath>parts</objPath>
+														<value>
+															<li Class="StatPart_Mood">
+																<factorFromMoodCurve>
+																	<points>
+																		<li>(0,{{stat}minmultiplier})</li>
+																		<li>(1,{{stat}maxmultiplier})</li>
+																	</points>
+																</factorFromMoodCurve>
+															</li>
+														</value>
+													</Operation>
+												</caseFalse>
+											</Operation>
+										</apply>
+									</Operation>
+								</caseTrue>
+								<caseFalse>
+									<!--The setting is set to false, so we need to remove the StatPart-->
+									<Operation Class="XmlExtensions.DefDatabaseConditional">
+										<defType>StatDef</defType>
+										<defName>{defName}</defName>
+										<objPath>parts/[@Class="StatPart_Mood"]</objPath>
+										<caseTrue>
+											<!--If the StatPart exists, remove it-->
+											<Operation Class="XmlExtensions.DefDatabaseOperationRemove">
+												<defType>StatDef</defType>
+												<defName>{defName}</defName>
+												<objPath>parts/[@Class="StatPart_Mood"]</objPath>
+											</Operation>
+										</caseTrue>
+									</Operation>
+								</caseFalse>
+							</Operation>
+						</apply>
+					</li>
+				</value>
+			</Operation>
+		</apply>
+	</XmlExtensions.PatchDef>
+	
+</Defs>
