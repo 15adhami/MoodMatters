@@ -7,14 +7,14 @@
 	</supportedVersions>
 	<modDependencies>
     <li>
-        <packageId>Imranfish.XMLExtensions</packageId>
+        <packageId>imranfish.xmlextensions</packageId>
 		<displayName>XML Extensions</displayName>
 		<downloadUrl>https://github.com/15adhami/XmlExtensions/releases</downloadUrl>
         <steamWorkshopUrl>steam://url/CommunityFilePage/2574315206</steamWorkshopUrl>
     </li>
 	</modDependencies>
 	<loadAfter>
-		<li>Imranfish.XMLExtensions</li>
+		<li>imranfish.xmlextensions</li>
 	</loadAfter>
 	<packageId>Imranfish.MoodMatters</packageId>
 	<description>Makes various stats scale to the colonist's mood. Mood now slightly affects a colonist's general efficiency at all times, and so it is more important to manage. Low mood causes colonists to perform worse, but having high mood will give them an increase in efficiency. Fully customizable in the settings menu.</description>

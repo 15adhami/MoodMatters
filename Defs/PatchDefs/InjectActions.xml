@@ -47,15 +47,11 @@
 										<apply>
 											<!--Use DefDatabase operations instead-->
 											<Operation Class="XmlExtensions.DefDatabaseConditional">
-												<defType>StatDef</defType>
-												<defName>{defName}</defName>
-												<objPath>parts/[@Class="StatPart_Mood"]</objPath>
+												<objPath>StatDef/[defName="{defName}"]/parts/[@Class="StatPart_Mood"]</objPath>
 												<caseTrue>
 													<!--If the StatPart exists already (if the user only changes the min/max values), then just update the numbers-->
 													<Operation Class="XmlExtensions.DefDatabaseOperationReplace">
-														<defType>StatDef</defType>
-														<defName>{defName}</defName>
-														<objPath>parts/[@Class="StatPart_Mood"]/factorFromMoodCurve/points</objPath>
+														<objPath>StatDef/[defName="{defName}"]/parts/[@Class="StatPart_Mood"]/factorFromMoodCurve/points</objPath>
 														<value>
 															<points>
 																<li>(0,{{stat}minmultiplier})</li>
@@ -65,11 +61,9 @@
 													</Operation>
 												</caseTrue>
 												<caseFalse>
-													<!--If the StatPart does not exist (the user had previously disables the setting), then add the StatPart-->
+													<!--If the StatPart does not exist (the user had previously disabled the setting), then add the StatPart-->
 													<Operation Class="XmlExtensions.DefDatabaseOperationAdd">
-														<defType>StatDef</defType>
-														<defName>{defName}</defName>
-														<objPath>parts</objPath>
+														<objPath>StatDef/[defName="{defName}"]/parts</objPath>
 														<value>
 															<li Class="StatPart_Mood">
 																<factorFromMoodCurve>
@@ -89,15 +83,11 @@
 								<caseFalse>
 									<!--The setting is set to false, so we need to remove the StatPart-->
 									<Operation Class="XmlExtensions.DefDatabaseConditional">
-										<defType>StatDef</defType>
-										<defName>{defName}</defName>
-										<objPath>parts/[@Class="StatPart_Mood"]</objPath>
+										<objPath>StatDef/[defName="{defName}"]/parts/[@Class="StatPart_Mood"]</objPath>
 										<caseTrue>
 											<!--If the StatPart exists, remove it-->
 											<Operation Class="XmlExtensions.DefDatabaseOperationRemove">
-												<defType>StatDef</defType>
-												<defName>{defName}</defName>
-												<objPath>parts/[@Class="StatPart_Mood"]</objPath>
+												<objPath>StatDef/[defName="{defName}"]/parts/[@Class="StatPart_Mood"]</objPath>
 											</Operation>
 										</caseTrue>
 									</Operation>
